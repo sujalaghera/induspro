@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>Indus Pro — Global Funded Trading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 :root{
   --bg:#0f172a;
@@ -57,10 +56,10 @@ nav a:hover{
 .hero{
   padding:90px 20px;
   text-align:center;
-  animation:fadeUp 1.2s ease;
+  animation:fadeUp 1.2s ease forwards;
 }
 
-.hero h2{
+.hero h1{
   font-size:36px;
   margin-bottom:15px;
 }
@@ -86,68 +85,33 @@ nav a:hover{
   transform:scale(1.05);
 }
 
-/* SECTIONS */
-.section{
-  padding:70px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-
-.section h3{
-  text-align:center;
-  font-size:28px;
-  margin-bottom:40px;
-}
-
 /* CARDS */
+.section{
+  padding:60px 20px;
+}
+
 .cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:25px;
+  max-width:900px;
+  margin:auto;
 }
 
 .card{
   background:var(--card);
   padding:25px;
-  border-radius:14px;
-  transition:0.4s;
-  animation:fadeUp 1s ease;
-}
-
-.card:hover{
-  transform:translateY(-10px);
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-
-.card h4{
-  color:var(--primary);
-  margin-bottom:10px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:25px;
-  color:var(--muted);
-  background:#020617;
+  border-radius:12px;
+  margin-bottom:20px;
+  animation:fadeUp 1s ease forwards;
 }
 
 /* ANIMATION */
 @keyframes fadeUp{
   from{
     opacity:0;
-    transform:translateY(40px);
+    transform:translateY(30px);
   }
   to{
     opacity:1;
     transform:translateY(0);
-  }
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .hero h2{
-    font-size:28px;
   }
 }
 </style>
