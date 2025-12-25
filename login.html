@@ -6,10 +6,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body{
-  background:#0f172a;
-  color:white;
+:root{
+  --bg:#0f172a;
+  --card:#020617;
+  --primary:#22c55e;
+  --text:#ffffff;
+  --muted:#94a3b8;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
   font-family:Arial, sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
   display:flex;
   justify-content:center;
   align-items:center;
@@ -17,7 +31,7 @@ body{
 }
 
 .box{
-  background:#020617;
+  background:var(--card);
   padding:30px;
   width:100%;
   max-width:360px;
@@ -33,22 +47,37 @@ h2{
 input{
   width:100%;
   padding:12px;
-  margin-bottom:15px;
+  margin:10px 0;
   border:none;
   border-radius:8px;
+  background:#020617;
+  color:white;
+  border:1px solid #1e293b;
+}
+
+input:focus{
+  outline:none;
+  border-color:var(--primary);
 }
 
 button{
   width:100%;
   padding:12px;
-  background:#22c55e;
+  background:var(--primary);
+  color:#000;
   border:none;
   border-radius:8px;
   font-weight:700;
+  cursor:pointer;
+  margin-top:10px;
+}
+
+button:hover{
+  opacity:0.9;
 }
 
 a{
-  color:#22c55e;
+  color:var(--primary);
   text-decoration:none;
   display:block;
   text-align:center;
@@ -66,11 +95,28 @@ a{
 
 <div class="box">
   <h2>Login to Indus Pro</h2>
-  <input type="email" placeholder="Email">
-  <input type="password" placeholder="Password">
-  <button>Login</button>
-  <a href="register.html">Create new account</a>
+
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <a href="index.html">Back to Home</a>
 </div>
+
+<script>
+function login(){
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if(email === "admin@induspro.com" && password === "123456"){
+    alert("Login successful");
+    window.location.href = "index.html";
+  } else {
+    alert("Wrong email or password");
+  }
+}
+</script>
 
 </body>
 </html>
