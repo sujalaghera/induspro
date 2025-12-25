@@ -1,120 +1,134 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Login | Indus Pro</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Indus Pro | Login</title>
 
-<style>
-:root{
-  --bg:#0f172a;
-  --card:#020617;
-  --primary:#22c55e;
-  --text:#ffffff;
-  --muted:#94a3b8;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial, sans-serif;
-}
+    body {
+      height: 100vh;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+    }
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
+    .login-box {
+      width: 100%;
+      max-width: 380px;
+      background: #020617;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 0 30px rgba(34, 197, 94, 0.3);
+      animation: fadeUp 0.8s ease;
+    }
 
-.box{
-  background:var(--card);
-  padding:30px;
-  width:100%;
-  max-width:360px;
-  border-radius:12px;
-  animation:fadeUp 1s ease;
-}
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #22c55e;
+    }
 
-h2{
-  text-align:center;
-  margin-bottom:20px;
-}
+    .input-group {
+      margin-bottom: 15px;
+    }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:none;
-  border-radius:8px;
-  background:#020617;
-  color:white;
-  border:1px solid #1e293b;
-}
+    .input-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 14px;
+    }
 
-input:focus{
-  outline:none;
-  border-color:var(--primary);
-}
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      background: #0f172a;
+      color: white;
+    }
 
-button{
-  width:100%;
-  padding:12px;
-  background:var(--primary);
-  color:#000;
-  border:none;
-  border-radius:8px;
-  font-weight:700;
-  cursor:pointer;
-  margin-top:10px;
-}
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: #022c22;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
 
-button:hover{
-  opacity:0.9;
-}
+    .login-btn:hover {
+      background: #16a34a;
+    }
 
-a{
-  color:var(--primary);
-  text-decoration:none;
-  display:block;
-  text-align:center;
-  margin-top:15px;
-}
+    .back-home {
+      text-align: center;
+      margin-top: 15px;
+    }
 
-@keyframes fadeUp{
-  from{opacity:0; transform:translateY(20px);}
-  to{opacity:1; transform:translateY(0);}
-}
-</style>
+    .back-home a {
+      color: #22c55e;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="box">
-  <h2>Login to Indus Pro</h2>
+  <div class="login-box">
+    <h2>Indus Pro Login</h2>
 
-  <input type="email" id="email" placeholder="Email">
-  <input type="password" id="password" placeholder="Password">
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" placeholder="Enter your email" />
+    </div>
 
-  <button onclick="login()">Login</button>
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" placeholder="Enter your password" />
+    </div>
 
-  <a href="index.html">Back to Home</a>
-</div>
-<script>
-function login(){
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+    <button class="login-btn" onclick="login()">Login</button>
 
-  if(email === "admin@induspro.com" && password === "123456"){
-    alert("Login successful");
-    window.location.href = "dashboard.html";
-  } else {
-    alert("Wrong email or password");
-  }
-}
-</script>
+    <div class="back-home">
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      // demo login (no backend)
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "dashboard.html";
+    }
+  </script>
+
 </body>
 </html>
