@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard | Indus Pro</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body{
+  background:#0f172a;
+  color:white;
+  font-family:Arial,sans-serif;
+  margin:0;
+}
+header{
+  background:#020617;
+  padding:16px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logout{
+  background:#ef4444;
+  color:white;
+  border:none;
+  padding:10px 16px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.box{
+  padding:30px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h2>Indus Pro Dashboard</h2>
+  <button class="logout" onclick="logout()">Logout</button>
+</header>
+
+<div class="box">
+  <h3>Welcome Trader 🚀</h3>
+  <p>Your funded account overview will appear here.</p>
+</div>
+
+<script>
+if(localStorage.getItem("loggedIn")!=="true"){
+  window.location.href="login.html";
+}
+function logout(){
+  localStorage.removeItem("loggedIn");
+  window.location.href="login.html";
+}
+</script>
+
+</body>
+</html>
