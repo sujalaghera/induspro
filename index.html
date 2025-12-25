@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Indus Pro — Global Funded Trading</title>
+<title>Indus Pro – Global Funded Trading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 :root{
   --bg:#0f172a;
@@ -14,152 +15,259 @@
 }
 
 *{
-  box-sizing:border-box;
   margin:0;
   padding:0;
+  box-sizing:border-box;
   font-family:Arial, sans-serif;
 }
+
+html{ scroll-behavior:smooth; }
 
 body{
   background:var(--bg);
   color:var(--text);
 }
 
-/* HEADER */
+/* NAVBAR */
 header{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:16px 22px;
+  background:#020617;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:18px 24px;
-  background:#020617;
-  position:sticky;
-  top:0;
-  z-index:100;
+  z-index:999;
 }
 
-header h1{
+header.scrolled{
+  box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+
+.logo{
   font-size:22px;
+  font-weight:700;
+}
+
+nav{
+  display:flex;
+  gap:20px;
 }
 
 nav a{
   color:white;
-  margin-left:18px;
   text-decoration:none;
   font-weight:600;
 }
 
-nav a:hover{
-  color:var(--primary);
+nav a:hover{ color:var(--primary); }
+
+/* MOBILE MENU */
+.menu-btn{
+  display:none;
+  font-size:26px;
+  cursor:pointer;
+}
+
+@media(max-width:768px){
+  nav{
+    position:absolute;
+    top:60px;
+    right:0;
+    background:#020617;
+    flex-direction:column;
+    width:100%;
+    display:none;
+  }
+  nav.active{ display:flex; }
+  nav a{ padding:14px; }
+  .menu-btn{ display:block; }
 }
 
 /* HERO */
 .hero{
-  padding:90px 20px;
+  padding:130px 20px 90px;
   text-align:center;
-  animation:fadeUp 1.2s ease forwards;
+  animation:fadeUp 1.2s ease;
 }
 
 .hero h1{
-  font-size:36px;
+  font-size:38px;
   margin-bottom:15px;
 }
 
 .hero p{
+  max-width:620px;
+  margin:auto;
   color:var(--muted);
-  max-width:600px;
-  margin:0 auto 30px;
+  margin-bottom:30px;
 }
 
 .btn{
   background:var(--primary);
-  color:#000;
-  padding:14px 30px;
+  color:black;
+  padding:14px 34px;
   border-radius:30px;
   font-weight:700;
   text-decoration:none;
   display:inline-block;
-  transition:0.3s;
+  transition:.3s;
 }
 
 .btn:hover{
-  transform:scale(1.05);
+  transform:scale(1.08);
+}
+
+/* SECTION */
+section{
+  padding:70px 20px;
+  text-align:center;
+}
+
+section h2{
+  font-size:28px;
+  margin-bottom:35px;
 }
 
 /* CARDS */
-.section{
-  padding:60px 20px;
-}
-
 .cards{
-  max-width:900px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+  max-width:1100px;
   margin:auto;
 }
 
 .card{
   background:var(--card);
+  padding:26px;
+  border-radius:16px;
+  opacity:0;
+  transform:translateY(30px);
+  transition:.6s;
+}
+
+.card.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.card:hover{
+  transform:translateY(-8px) scale(1.03);
+}
+
+.card h3{
+  color:var(--primary);
+  margin-bottom:12px;
+}
+
+.card p{
+  color:var(--muted);
+}
+
+/* PRICING */
+.price{
+  font-size:28px;
+  font-weight:700;
+  margin:10px 0;
+}
+
+/* FOOTER */
+footer{
   padding:25px;
-  border-radius:12px;
-  margin-bottom:20px;
-  animation:fadeUp 1s ease forwards;
+  text-align:center;
+  color:var(--muted);
+  font-size:14px;
 }
 
 /* ANIMATION */
 @keyframes fadeUp{
-  from{
-    opacity:0;
-    transform:translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <h1>Indus Pro</h1>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">Programs</a>
-    <a href="#">Rules</a>
-    <a href="#">Login</a>
+<header id="navbar">
+  <div class="logo">Indus Pro</div>
+  <div class="menu-btn" onclick="toggleMenu()">☰</div>
+  <nav id="menu">
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#pricing">Challenges</a>
+    <a href="#login">Login</a>
   </nav>
 </header>
 
-<section class="hero">
-  <h2>Global Funded Trading Platform</h2>
-  <p>Trade Forex, Crypto & Indices with virtual capital and keep real profits.</p>
-  <a href="#" class="btn">Get Funded</a>
+<section class="hero" id="home">
+  <h1>Global Funded Trading Platform</h1>
+  <p>Trade Forex, Crypto & Indices with virtual capital and earn real profits.</p>
+  <a href="#pricing" class="btn">Get Funded</a>
 </section>
 
-<section class="section">
-  <h3>Why Choose Indus Pro?</h3>
+<section id="features">
+  <h2>Why Indus Pro?</h2>
+  <div class="cards">
+    <div class="card"><h3>Up to $200,000</h3><p>Large funded trading accounts.</p></div>
+    <div class="card"><h3>80% Profit Split</h3><p>Keep maximum profits.</p></div>
+    <div class="card"><h3>No Risk</h3><p>Trade with simulated capital.</p></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>Funding Challenges</h2>
   <div class="cards">
     <div class="card">
-      <h4>Up to $200,000</h4>
-      <p>Get access to large funded trading accounts.</p>
+      <h3>Starter</h3>
+      <div class="price">$10,000</div>
+      <p>Best for beginners</p>
+      <a class="btn" href="#">Start</a>
     </div>
     <div class="card">
-      <h4>80% Profit Split</h4>
-      <p>Keep most of what you earn.</p>
+      <h3>Pro</h3>
+      <div class="price">$50,000</div>
+      <p>Most popular</p>
+      <a class="btn" href="#">Start</a>
     </div>
     <div class="card">
-      <h4>No Risk</h4>
-      <p>Trade with virtual capital, zero personal risk.</p>
-    </div>
-    <div class="card">
-      <h4>Fast Payouts</h4>
-      <p>Quick and reliable withdrawals.</p>
+      <h3>Elite</h3>
+      <div class="price">$200,000</div>
+      <p>For professional traders</p>
+      <a class="btn" href="#">Start</a>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2025 Indus Pro. All rights reserved.
+© 2025 Indus Pro · All Rights Reserved
 </footer>
+
+<script>
+/* NAVBAR SHADOW */
+window.addEventListener("scroll",()=>{
+  document.getElementById("navbar")
+  .classList.toggle("scrolled",window.scrollY>20);
+});
+
+/* MOBILE MENU */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
+
+/* SCROLL ANIMATION */
+const cards=document.querySelectorAll(".card");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("show");
+    }
+  });
+});
+cards.forEach(card=>observer.observe(card));
+</script>
 
 </body>
 </html>
