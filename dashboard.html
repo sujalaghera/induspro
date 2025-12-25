@@ -3,55 +3,85 @@
 <head>
 <meta charset="UTF-8">
 <title>Dashboard | Indus Pro</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body{
-  background:#0f172a;
-  color:white;
-  font-family:Arial,sans-serif;
-  margin:0;
+:root{
+  --bg:#0f172a;
+  --card:#020617;
+  --primary:#22c55e;
+  --text:#ffffff;
+  --muted:#94a3b8;
 }
-header{
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+nav{
   background:#020617;
-  padding:16px;
+  padding:15px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.logout{
-  background:#ef4444;
-  color:white;
-  border:none;
-  padding:10px 16px;
-  border-radius:8px;
-  cursor:pointer;
+
+nav h2{
+  color:var(--primary);
 }
-.box{
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+}
+
+.container{
   padding:30px;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:20px;
+  animation:fadeUp 1s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
 }
 </style>
 </head>
+
 <body>
 
-<header>
-  <h2>Indus Pro Dashboard</h2>
-  <button class="logout" onclick="logout()">Logout</button>
-</header>
+<nav>
+  <h2>Indus Pro</h2>
+  <a href="login.html">Logout</a>
+</nav>
 
-<div class="box">
-  <h3>Welcome Trader 🚀</h3>
-  <p>Your funded account overview will appear here.</p>
+<div class="container">
+  <div class="card">
+    <h3>Welcome to Dashboard</h3>
+    <p>You are successfully logged in.</p>
+  </div>
+
+  <div class="card">
+    <h3>Account Overview</h3>
+    <p>Balance: ₹0.00</p>
+    <p>Status: Active</p>
+  </div>
 </div>
-
-<script>
-if(localStorage.getItem("loggedIn")!=="true"){
-  window.location.href="login.html";
-}
-function logout(){
-  localStorage.removeItem("loggedIn");
-  window.location.href="login.html";
-}
-</script>
 
 </body>
 </html>
